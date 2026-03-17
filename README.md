@@ -1,44 +1,86 @@
-# 📝 Fake News Detection: ML vs. Deep Learning (DistilBERT)
+# 🛡️ Fake News Detection: Machine Learning vs. Deep Learning (DistilBERT)
 
-![Python](https://img.shields.io/badge/python-3.12-blue.svg)
-![Transformers](https://img.shields.io/badge/lib-transformers-orange.svg)
-![Accuracy](https://img.shields.io/badge/accuracy-99%25-green.svg)
-![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
+Este proyecto desarrolla un sistema de clasificación binaria para identificar noticias falsas con alta fidelidad, comparando la eficiencia de algoritmos estadísticos clásicos frente a arquitecturas modernas de **Transformers**. 
 
-## 📌 Descripción del Proyecto
-Este repositorio contiene un sistema avanzado de clasificación de noticias diseñado para combatir la desinformación. El proyecto compara dos enfoques tecnológicos distintos para la detección de *Fake News*:
-1.  **Machine Learning Clásico:** Vectorización TF-IDF con Regresión Logística.
-2.  **Deep Learning:** Fine-tuning del modelo Transformer **DistilBERT** (`distilbert-base-uncased`).
+[![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://www.python.org/)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Transformers-orange)](https://huggingface.co/docs/transformers/index)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red?logo=pytorch)](https://pytorch.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-El sistema es capaz de identificar patrones lingüísticos sutiles y determinar la veracidad de un artículo periodístico con una **exactitud final del 99%**.
+---
 
-## 🚀 Características Principales
-* **Mitigación de Data Leakage:** Implementación de limpieza avanzada con Regex para eliminar sesgos de agencias (como cabeceras de "Reuters") que suelen inflar artificialmente la precisión.
-* **Pipeline Dual de Preprocesamiento:** * Limpieza estricta (lematización y remoción de stopwords) para el modelo estadístico.
-    * Limpieza ligera (preservación de contexto) para el modelo Transformer.
-* **Inferencia Interactiva:** Módulo integrado para predecir noticias externas en tiempo real.
-* **Eficiencia Computacional:** Configuración optimizada para entrenamiento en GPUs comerciales o Google Colab (ajuste de batch size y acumulación de gradientes).
+## 📌 Descripción General
+El objetivo principal es combatir la desinformación mediante el procesamiento de lenguaje natural (NLP). El sistema analiza el contenido textual de noticias y detecta patrones de manipulación, comparando una línea base de **Machine Learning (TF-IDF + Regresión Logística)** contra un modelo de **Deep Learning (DistilBERT)**.
 
-## 📊 Resultados y Comparativa
+### Características Clave:
+- **Detección de Data Leakage:** Implementación de limpieza con Regex para eliminar metadatos de agencias (ej. "Reuters") que sesgan el modelo.
+- **Pipeline Dual:** Preprocesamiento adaptativo según el tipo de arquitectura utilizada.
+- **Inferencia en tiempo real:** Módulo funcional para validar noticias externas.
+- **Optimización de recursos:** Fine-tuning de DistilBERT configurado para ejecutarse en entornos con VRAM limitada.
 
-| Modelo | Accuracy | F1-Score | Ventaja Principal |
-| :--- | :---: | :---: | :--- |
-| **LogReg + TF-IDF** | 98% | 0.98 | Alta eficiencia en CPU / Baja latencia |
-| **DistilBERT** | **99%** | **0.99** | Comprensión semántica y contextual profunda |
+---
 
-> **Análisis:** Mientras que el modelo clásico es excelente para detectar palabras clave, DistilBERT logra capturar matices en el tono narrativo y la estructura gramatical, reduciendo significativamente los falsos positivos.
+## 📊 Comparativa de Rendimiento
 
-## 🛠️ Tecnologías Utilizadas
-* **Lenguaje:** Python 3.12
-* **Bibliotecas NLP:** Hugging Face `transformers`, `datasets`, `evaluate`, NLTK, Scikit-learn.
-* **Deep Learning:** PyTorch.
-* **Entorno de ejecución:** Google Colab con aceleración por hardware (VRAM optimizada).
-* **Dataset:** ISOT Fake News Dataset (University of Victoria).
+| Métrica | ML Clásico (TF-IDF + LR) | Deep Learning (DistilBERT) |
+| :--- | :---: | :---: |
+| **Accuracy** | 98% | **99%** |
+| **F1-Score (Fake)** | 0.99 | **0.99** |
+| **Carga Computacional** | Muy Baja (CPU) | Alta (GPU Requerida) |
+| **Comprensión Semántica** | Basada en términos | Contextual y gramatical |
 
-## 📂 Estructura del Repositorio
+---
+
+## 📂 Estructura del Proyecto
+
 ```bash
-├── notebooks/
-│   └── Fake_News_Detection_Model.ipynb   # Código fuente completo y documentado
-├── data/                                 # Directorio para archivos True.csv y Fake.csv
-├── README.md                             # Documentación del proyecto
-└── requirements.txt                      # Dependencias del entorno
+fake-news-detection-project/
+├── data/                       # Datasets originales (ISOT Dataset)
+│   ├── Fake.zip
+│   └── True.zip
+├── docs/                       # Documentación técnica y académica
+│   └── Memoria_Tecnica.pdf
+├── notebooks/                  # Desarrollo experimental
+│   └── fake_news_detector.ipynb
+├── README.md                   # Documentación principal
+└── requirements.txt            # Dependencias del entorno
+```
+---
+
+## 🛠️ Instalación y Requisitos
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/ruizgardonpaula/fake-news-detection-project.git
+   cd fake-news-detection-project
+   ```
+2. **Instalar dependencias::** 
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. **Uso:** Ejecuta el notebook notebooks/fake_news_detector.ipynb en Google Colab o Jupyter. Para el entrenamiento del modelo Transformer, se recomienda activar la aceleración por GPU.
+
+---
+
+## 🔬 Metodología
+
+### 1. Preprocesamiento de Datos
+* **ML Clásico:** Limpieza estricta, eliminación de *stopwords* y lematización mediante la librería `NLTK`.
+* **DistilBERT:** Limpieza ligera para preservar la estructura sintáctica y el contexto semántico necesario para el mecanismo de atención del *Transformer*.
+
+### 2. Fine-Tuning
+Se realizó un ajuste fino del modelo `distilbert-base-uncased` durante **3 épocas**, utilizando un optimizador **AdamW** con una tasa de aprendizaje (learning rate) de $2 \times 10^{-5}$ y la implementación de técnicas de acumulación de gradientes para optimizar el consumo de memoria VRAM.
+
+---
+
+## ⚠️ Limitaciones y Consideraciones Éticas
+* **Sesgo de Dataset:** El modelo ha sido entrenado con el ISOT Dataset (noticias políticas de 2017). El rendimiento podría variar al enfrentarse a noticias actuales o de sectores temáticos distintos (Salud, Clima, conflictos internacionales recientes, etc.).
+* **Detección de IA:** La desinformación generada por Modelos de Lenguaje de Gran Escala (LLMs) actuales puede requerir técnicas adicionales de detección basadas en marcas de agua digitales o análisis de coherencia sintáctica avanzada.
+
+---
+
+## 👩‍💻 Autora
+**Paula Ruiz Gardon** *Máster en Ciberseguridad e Inteligencia Artificial* [LinkedIn](https://linkedin.com/in/paularuizgardon) | [GitHub](https://github.com/ruizgardonpaula)
+
+---
+> *Este proyecto es parte del Trabajo de Fin de Módulo para **CEI - Escuela de Diseño y Marketing**.*
