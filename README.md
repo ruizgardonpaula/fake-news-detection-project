@@ -54,7 +54,7 @@ fake-news-detection-project/
    git clone https://github.com/ruizgardonpaula/fake-news-detection-project.git
    cd fake-news-detection-project
    ```
-2. **Instalar dependencias::** 
+2. **Instalar dependencias:** 
    ```bash
    pip install -r requirements.txt
    ```
