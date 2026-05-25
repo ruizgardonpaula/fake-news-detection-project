@@ -1,4 +1,4 @@
-# 🛡️ Fake News Detection: Machine Learning vs. Deep Learning (DistilBERT)
+# Fake News Detection: Machine Learning vs. Deep Learning (DistilBERT)
 
 Este proyecto desarrolla un sistema de clasificación binaria para identificar noticias falsas con alta fidelidad, comparando la eficiencia de algoritmos estadísticos clásicos frente a arquitecturas modernas de **Transformers**. 
 
@@ -9,7 +9,7 @@ Este proyecto desarrolla un sistema de clasificación binaria para identificar n
 
 ---
 
-## 📌 Descripción General
+## Descripción General
 El objetivo principal es combatir la desinformación mediante el procesamiento de lenguaje natural (NLP). El sistema analiza el contenido textual de noticias y detecta patrones de manipulación, comparando una línea base de **Machine Learning (TF-IDF + Regresión Logística)** contra un modelo de **Deep Learning (DistilBERT)**.
 
 ### Características Clave:
@@ -20,7 +20,7 @@ El objetivo principal es combatir la desinformación mediante el procesamiento d
 
 ---
 
-## 📊 Comparativa de Rendimiento
+## Comparativa de Rendimiento
 
 | Métrica | ML Clásico (TF-IDF + LR) | Deep Learning (DistilBERT) |
 | :--- | :---: | :---: |
@@ -31,7 +31,7 @@ El objetivo principal es combatir la desinformación mediante el procesamiento d
 
 ---
 
-## 📂 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```bash
 fake-news-detection-project/
@@ -47,7 +47,7 @@ fake-news-detection-project/
 ```
 ---
 
-## 🛠️ Instalación y Requisitos
+## Instalación y Requisitos
 
 1. **Clonar el repositorio:**
    ```bash
@@ -62,7 +62,7 @@ fake-news-detection-project/
 
 ---
 
-## 🔬 Metodología
+## Metodología
 
 ### 1. Preprocesamiento de Datos
 * **ML Clásico:** Limpieza estricta, eliminación de *stopwords* y lematización mediante la librería `NLTK`.
@@ -73,13 +73,13 @@ Se realizó un ajuste fino del modelo `distilbert-base-uncased` durante **3 épo
 
 ---
 
-## ⚠️ Limitaciones y Consideraciones Éticas
+## Limitaciones y Consideraciones Éticas
 * **Sesgo de Dataset:** El modelo ha sido entrenado con el ISOT Dataset (noticias políticas de 2017). El rendimiento podría variar al enfrentarse a noticias actuales o de sectores temáticos distintos (Salud, Clima, conflictos internacionales recientes, etc.).
 * **Detección de IA:** La desinformación generada por Modelos de Lenguaje de Gran Escala (LLMs) actuales puede requerir técnicas adicionales de detección basadas en marcas de agua digitales o análisis de coherencia sintáctica avanzada.
 
 ---
 
-## 👩‍💻 Autora
+## Autora
 **Paula Ruiz Gardon** *Máster en Ciberseguridad e Inteligencia Artificial* [LinkedIn](https://linkedin.com/in/paularuizgardon) | [GitHub](https://github.com/ruizgardonpaula)
 
 ---
